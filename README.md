@@ -21,21 +21,21 @@
 ##IV.Cơ chế
 <img src="http://i.imgur.com/qGxobnV.png">
 
-###`Bước 1:`
+###**Bước 1:**
 Khi client kết nối vào mạng và chưa có IP, nó sẽ gửi broadcast gói tin DHCP Discover (bao gồm địa chỉ MAC và tên client) để tìm kiếm DHCP server trong mạng nội bộ.
 
-###`Bước 2:`
+###**Bước 2:**
 - Khi DHCP Server nhận được thông điệp Discover từ client, nó hồi đáp unicast về một gói DHCP Offer đến client.
 - Gói Offer sẽ đưa ra một cấu hình IP mà server muốn gán xuống cho client. Trong thời gian này server không cấp địa chỉ IP vừa đề nghị cho một client nào khác.
 
-###`Bước 3:`
+###**Bước 3:**
 - Đến lượt nó, client gửi lên gói broadcast cho DHCP server gói DHCP Request.
 - Thông điệp Request của client sẽ cho biết yêu cầu của nó với những thông tin đã được server offer ở bước trước. Điều này giúp cho các gói tin không được chấp nhận sẽ được server thu hồi và cấp cho các client khác.
 
-###`Bước 4:`
+###**Bước 4:**
 - Cuối cùng, server hồi đáp lại cho client gói DHCP ACK để xác nhận cấu hình IP mà client đã request.
 
-###`Lưu ý:`
+###**Lưu ý:**
 - Mỗi cấu hình IP được cấp phát sẽ chỉ có thời hạn trong một khoảng thời gian nhất định, sau khoảng thời gian này, client phải yêu cầu server cấp phát gia hạn lại cấu hình IP của mình. Trong những lần sau, các thông điệp DHCP được gửi unicast thay vì broadcast như lần cấp phát đầu tiên.
 - Tất cả việc trao đổi thông tin giữa một DHCP server và client sẽ sử dụng giao thức UDP tại hai cổng 67 và 68.
 - Tất cả các gói tin client gửi đều là broadcast.
