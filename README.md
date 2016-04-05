@@ -19,7 +19,7 @@
 - DHCP Release: Client gửi một gói DHCP Release đến một server để giải phóng địa chỉ IP và xoá bất cứ thuê bao nào đang tồn tại.
 
 ##Cơ chế
-http://i.imgur.com/qGxobnV.png
+<img src="http://i.imgur.com/qGxobnV.png">
 
 ###Bước 1:
 Khi client kết nối vào mạng và chưa có IP, nó sẽ gửi broadcast gói tin DHCP Discover (bao gồm địa chỉ MAC và tên client) để tìm kiếm DHCP server trong mạng nội bộ.
@@ -41,3 +41,22 @@ Khi client kết nối vào mạng và chưa có IP, nó sẽ gửi broadcast g�
 - Tất cả các gói tin client gửi đều là broadcast.
 
 ##DHCP Header
+<img src="http://i.imgur.com/jcvXk5i.png">
+
+| Tên trường | Kích thước (byte) | Mô tả |
+|------------|-------------------|-------|
+| Operation Code | 1 | Chỉ ra loại thông điệp. Giá trị 1 là request message, 2 là reply message. |
+| Hardware Type | 1 | Chỉ ra kiêu phần cứng mà mạng sử dụng |
+| Hardware Address Length | 1 |  Độ dài của địa chỉ phần cứng của mạng. VD: Đối với Ethernet hoặc các mạng khác sử dụng địa chỉ MAC IEEE 802, giá trị là 6 |
+| Hops | 1 | Có giá trị bằng 0 trước khi gửi yêu cầu, được Relay Agent kiểm soát các chuyển tiếp của BOOTP hoặc tin nhắn DHCP |
+| Transaction Identifier | 4 | Được client tạo ra, để liên kết thông điệp yêu cầu và phản hồi từ máy chủ DHCP |
+| Seconds | 2 | Số giây mà client gửi thông điệp đến server |
+| Flags | 2 | Đây là một loại dấu hiệu để nhận biết gói tin có phải là Broadcast hay không |
+| Client IP Address | 4 | Client sẽ đưa IP của nó vào trường này nếu nó hợp lệ hoặc đang trong các trạng thái BOUND, RENEWING, REBINDING; nếu không giá trị bằng 0 |
+| Your IP Address | 4 | Địa chỉ IP mà server gán cho client |
+| Server IP Address | 4 | Địa chỉ IP server |
+| Gateway IP Address | 4 | Địa chỉ IP để mạng ra ngoài mạng khác |
+| Client Hardware Address | 16 | Địa chỉ MAC của client |
+| Server Name | 64 | Tên của server, có thể là domain của server |
+| Boot Filename | 128 | Với client, khởi động thông điệp DHCPDiscover. Với server thì nó dùng để gửi đi các thông điệp Offer |
+| Options | Variable | Các tùy chọn, các thông số đi kèm (nếu có) |
