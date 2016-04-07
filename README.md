@@ -39,6 +39,7 @@ Khi client kết nối vào mạng và chưa có IP, nó sẽ gửi broadcast g�
 - Mỗi cấu hình IP được cấp phát sẽ chỉ có thời hạn trong một khoảng thời gian nhất định, sau khoảng thời gian này, client phải yêu cầu server cấp phát gia hạn lại cấu hình IP của mình. Trong những lần sau, các thông điệp DHCP được gửi unicast thay vì broadcast như lần cấp phát đầu tiên.
 - Tất cả việc trao đổi thông tin giữa một DHCP server và client sẽ sử dụng giao thức UDP tại hai cổng 67 và 68.
 - Tất cả các gói tin client gửi đều là broadcast.
+- Tất cả các gói tin server gửi đều là unicast.
 
 ##V.DHCP Header
 <img src="http://i.imgur.com/jcvXk5i.png">
